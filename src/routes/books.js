@@ -3,8 +3,8 @@ import { booksController } from "../controllers";
 
 // import {}
 export const booksRouter = Router();
-booksRouter.get("/", booksController.getBooks);
-booksRouter.get("/:id", booksController.getBook);
-booksRouter.post("/add", booksController.addBook) 
-booksRouter.put("/update/:id", booksController.updateBook) 
-booksRouter.delete("/delete/:id", booksController.deleteBook) 
+booksRouter.get("/", booksController.getAll);
+booksRouter.get("/:id", booksController.getOne);
+booksRouter.post("/add", booksController.add) 
+booksRouter.put("/update/:id", booksController.update) 
+booksRouter.delete("/delete/:id", booksController.remove) 

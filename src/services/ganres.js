@@ -4,18 +4,18 @@ import { stringify } from "../utils";
 export async function getAll() {
   return (
     await db.connection.query(`
-    select * from book;`)
+    select * from ganre;`)
   ).recordset;
 }
-export async function add(author, ganre, name_book, amount) {
+export async function add(ganre_description, ganre_name) {
   return db.connection.query(
-    `insert into book (author,ganre,name_book,amount) values(${author},${ganre},${stringify(
-      name_book
-    )},${amount});`
+    `insert into ganre (ganre_description,ganre_name) values(${stringify(
+      ganre_description
+    )},${stringify(ganre_name)});`
   );
 }
 export async function remove(id) {
-  return db.connection.query(`delete from book where book_id = ${id};`);
+  return db.connection.query(`delete from ganre where id_ganre = ${id};`);
 }
 export async function update(id, newElem) {
   const values = Object.entries(newElem)
@@ -30,11 +30,11 @@ export async function update(id, newElem) {
     })
     .join(",");
   return db.connection.query(
-    `update book set ${values} where book_id = ${id};`
+    `update ganre set ${values} where id_ganre = ${id};`
   );
 }
 export async function getOne(id) {
   return (
-    await db.connection.query(`select * from book where book_id = ${id};`)
+    await db.connection.query(`select * from ganre where id_ganre = ${id};`)
   ).recordset;
 }
